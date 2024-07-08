@@ -30,6 +30,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Route::group(['as' => 'frontend.', 'prefix' => 'frontend'], function () {
     Route::resource('frontend-artikel', ArtikelFrontendController::class);
+
     Route::resource('frontend-layanan', LayananFrontendController::class);
     Route::resource('frontend-kontak', KontakFrontendController::class);
     Route::resource('frontend-komentar', KomentarFrontendController::class);

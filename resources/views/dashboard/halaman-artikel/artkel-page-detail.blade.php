@@ -1,13 +1,16 @@
 @extends('layouts.app')
 @push('after-css')
     <style>
+        .badge{
+            border-radius: 4px;
+        }
     </style>
 @endpush
 
 @section('content')
     <div class="container">
         <div class="col-12 card border-0" style="padding-left: 5cm;padding-right: 5cm;padding-top: 1cm;padding-bottom: 1cm;">
-            <div class=" p-4 rounded" style="background-color: #f1f8f7">
+            <div class=" p-4 rounded">
                 {{-- <div class=" p-4 rounded" style="background-color: #f1f8f7"> --}}
                 <badge class="badge bg-secondary">{{ $data->kategoris->nama }}</badge>
                 <div class="col-12 ">
@@ -37,7 +40,7 @@
                     </p>
                 </div>
                 <h3 style="margin-top: 3cm">Comments</h3>
-                <div class="card border-0" style="background-color: ;height: 170px">
+                <div class="card border-2 p-1" style="background-color: ;height: 170px">
                     <input type="hidden" id="idArtikel" name="idArtikel" value="{{ $data->id }}"
                         placeholder="Enter Komentar"
                         style="outline: 0;border-left:none;border-right:none;border-top:none;margin-top: 2cm ">

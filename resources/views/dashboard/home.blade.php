@@ -27,7 +27,6 @@
     <!-- Main artikel -->
     @include('dashboard.halaman-artikel.artikel-page')
     {{-- end artikel --}}
-    <hr><br>
     <!-- Main eevent -->
     @include('dashboard.halaman-event.event-page')
     {{-- end event --}}

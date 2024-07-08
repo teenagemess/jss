@@ -16,13 +16,22 @@ class ArtikelFrontendController extends Controller
      */
     public function index()
     {
-        $dataartikelfooter = ArtikelModel::limit(2)->get();
-        $dataartikelunggulan = ArtikelModel::limit(4)->get();
-        $dataartikel = ArtikelModel::all();
+        $dataartikelfooter = ArtikelModel::orderBy('created_at', 'desc')->limit(2)->get();
+        $dataartikelunggulan = ArtikelModel::orderBy('created_at', 'desc')->limit(4)->get();
+        $dataartikel = ArtikelModel::orderBy('created_at', 'desc')->paginate(9); // Menampilkan 10 artikel per halaman
         $kategori = KategoriModel::all();
         $dataProfile = ProfileModel::first();
-        return view('frontend.data-artikel.data-artikel', ['kategori' => $kategori, 'dataartikelfooter' => $dataartikelfooter, 'dataartikel' => $dataartikel, 'dataartikelunggulan' => $dataartikelunggulan, 'dataProfile' => $dataProfile]);
+
+        return view('frontend.data-artikel.data-artikel', [
+            'kategori' => $kategori,
+            'dataartikelfooter' => $dataartikelfooter,
+            'dataartikel' => $dataartikel,
+            'dataartikelunggulan' => $dataartikelunggulan,
+            'dataProfile' => $dataProfile,
+        ]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

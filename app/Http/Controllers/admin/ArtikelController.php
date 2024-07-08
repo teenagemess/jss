@@ -18,20 +18,18 @@ class ArtikelController extends Controller
      */
     public function index(Request $request)
     {
-        // dd("masuk");
-        $data = ArtikelModel::with('kategoris')->get();
+        $data = ArtikelModel::with('kategoris')->latest()->get(); // Menggunakan latest() untuk mengurutkan berdasarkan created_at DESC
         if ($request->ajax()) {
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('deskripsi', function ($row) {
-                    $datalimit =  \Illuminate\Support\Str::words($row->deskripsi, 30, '...');
-                    // $datalimit =  \Illuminate\Support\Str::of($row->deskripsi)->limit(100);
-                    // $final = $datalimit . '....';
+                    $datalimit = \Illuminate\Support\Str::words($row->deskripsi, 30, '...');
                     return $datalimit;
                 })
                 ->addColumn('action', function ($data) {
                     $btn = '<a href="#" onclick="deleteFile(event,' . $data->id . ')"><span class="tf-icons bx bx-trash-alt"></span></a>
-                <a href="' . route('admin.data-artikel.show', $data->id) . '"><span class="tf-icons bx bx-show"></span></a><a href="' . route('admin.data-artikel.edit', $data->id) . '"><span class="tf-icons bx bx-edit-alt"></span></a>';
+                            <a href="' . route('admin.data-artikel.show', $data->id) . '"><span class="tf-icons bx bx-show"></span></a>
+                            <a href="' . route('admin.data-artikel.edit', $data->id) . '"><span class="tf-icons bx bx-edit-alt"></span></a>';
                     return $btn;
                 })
                 ->rawColumns(['action', 'deskripsi'])

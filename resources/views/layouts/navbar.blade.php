@@ -1,5 +1,5 @@
 <!-- Navbar start -->
-<div class="container-fluid sticky-top px-0" style="background-color: rgb(13, 121, 40)">
+<div class="container-fluid sticky-top px-0" style="background-color: #089E52">
     <div class="container-fluid ">
         <div class="container px-0">
             <nav class="navbar navbar-light navbar-expand-xl">

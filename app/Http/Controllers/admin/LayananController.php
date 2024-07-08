@@ -16,7 +16,7 @@ class LayananController extends Controller
      */
     public function index(Request $request)
     {
-        $data = LayananModel::with(['jenislayanans'])->get();
+        $data = LayananModel::with(['jenislayanans'])->latest()->get();
         // dd($data);
         if ($request->ajax()) {
             return DataTables::of($data)

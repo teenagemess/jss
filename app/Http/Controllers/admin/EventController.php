@@ -17,7 +17,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         // dd("masuk");
-        $data = EventModel::with(['kategoris'])->get();
+        $data = EventModel::with(['kategoris'])->latest()->get();
         if ($request->ajax()) {
             return DataTables::of($data)
                 ->addIndexColumn()

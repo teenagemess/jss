@@ -1,58 +1,163 @@
 @push('after-css')
     <style>
+        /* Webkit (Chrome, Safari, Opera) */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 1px;
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(8, 158, 82, 0.7);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #089e52;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            background-color: rgba(241, 241, 241, 0.5);
+        }
+
+        .konten-kiri {
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .konten-kiri::-webkit-scrollbar {
+            width: 3px;
+            height: 1px;
+            background-color: transparent;
+        }
+
+        .konten-kiri::-webkit-scrollbar-thumb {
+            background-color: #089E52;
+            border-radius: 3px;
+        }
+
+        .konten-kiri::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .konten-kiri::-webkit-scrollbar-track {
+            background-color: #C4C4C4;
+            border-radius: 10px;
+        }
+
+        .container-flex {
+            padding-top: 60px;
+            display: flex;
+        }
+
+        body {
+            background-color: #F2F8F7;
+        }
+
         .card-img-top {
             width: 100%;
             height: 15vw;
             object-fit: cover;
+            border-radius: 8px;
         }
 
+        .card {
+            transition: 0.3s ease;
+        }
 
-        /* The dot/bullet/indicator container */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
         .dot-container {
             text-align: center;
             padding: 20px;
-            /* background: #ddd; */
         }
 
-        /* The dots/bullets/indicators */
         .dot {
             cursor: pointer;
-            height: 15px;
+            height: 7px;
             width: 15px;
             margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
+            background-color: rgba(169, 169, 169, 0.5);
+            border-radius: 40px;
             display: inline-block;
             transition: background-color 0.6s ease;
         }
 
-        /* Add a background color to the active dot/circle */
-        .active,
         .dot:hover {
-            background-color: #717171;
+            transform: scale(1.2);
         }
 
-        /* Add an italic font style to all quotes */
-        q {
-            font-style: italic;
+        .dot.active {
+            width: 35px;
+            height: 8px;
+            background-color: #089e52;
         }
 
-        /* Add a blue color to the author */
+        .mySlides {
+            display: none;
+            animation: fadeEffect 1.5s;
+        }
+
+        @keyframes fadeEffect {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .mySlides p {
+            padding-bottom: 15px;
+            color: #000;
+        }
+
+        small {
+            padding-bottom: 5px;
+        }
+
         .author {
             color: cornflowerblue;
         }
+
+        .card {
+            background-color: transparent;
+            border: none;
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        .sub-badge {
+            background-color: #089E52;
+            border-radius: 5px;
+        }
     </style>
 @endpush
-<div class="container">
-    <img src="{{ asset('assets2/img/carosel.png') }}" height="350vm" width="100%">
+<div class="container-flex" style="background-color: #F2F8F7">
+    <div class="container"
+        style="display: flex; width: max-content; text-align: center; align-items: center; padding-bottom: 0px; ">
+        <div class="judul" style="width: 400px; text-align:start;">
+            <h1 style="font-size: 61px;  color: #089E52;">Jogja Smart Service</h1>
+        </div>
+        <div class="garis" style="height: 120px; width: 1px; background-color: black;"></div>
+
+        <div class="subjudul" style="width: 500px; margin-left: 50px;">
+            <p style="text-align:start;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum non quos
+                quibusdam libero sequi maiores quidem excepturi molestias recusandae accusantium!</p>
+        </div>
+    </div>
 </div>
-<hr style="background-color: #0acf2b">
-<div class="container-fluid py-5 mt-3">
-    <div class="row" style="margin-left: 2cm">
+
+<div class="konten container-fluid py-5 mt-0" style="background-color: #F2F8F7">
+    <div class="row" style="margin-left: 2.5cm">
         <div class="col-8">
             <table>
                 <tr>
-                    <td><button type="button" class="btn btn-success text-white">
+                    <td><button type="button" class="sub-badge btn text-white">
                             Artikel
                         </button></td>
                     <td><b style="color: black;padding-left: 0.2cm">Unggulan</b></td>
@@ -62,7 +167,7 @@
         <div class="col-3">
             <table>
                 <tr>
-                    <td><button type="button" class="btn btn-success text-white">
+                    <td><button type="button" class="sub-badge btn text-white">
                             Ulasan
                         </button></td>
                     <td><b style="color: black;padding-left: 0.2cm">Pengguna</b></td>
@@ -74,30 +179,29 @@
     <div class="row g-4 mt-3" style="margin-left: 2cm">
         <div class="row">
             <div class="col-8">
-                <div class=" p-4 rounded" style="background-color: #f1f8f7">
+                <div class="konten-kiri p-4 rounded" style="background-color: #f1f8f7">
                     <div class="row">
                         @foreach ($dataartikel as $data)
                             <div class="col-sm-6">
                                 <a href="{{ route('frontend.frontend-artikel.show', $data->id) }}">
-                                    <b style="color: green">{{ Str::words($data->judul, 10, '...') }}</b><br>
-                                    <div class="card" style="width: 18rem;">
+                                    <h2>{{ Str::words($data->judul, 10, '...') }}</h2><br>
+                                    <div class="card" style="width: 28rem;">
                                         <img class="card-img-top" src="{{ asset('imageArtikel/' . $data->image) }}"
                                             alt="Card image cap">
                                         <div class="d-flex flex-column p-1">
-                                            <div class="d-flex justify-content-between">
-                                                <small class="text-body d-block"><i
-                                                        class="fas fa-calendar-alt me-1"></i>
+                                            <div class="d-flex justify-content-between" style="padding-top: 10px">
+                                                <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                                     {{ \Carbon\Carbon::parse($data->created_at)->format('D m Y') }}</small>
                                                 <small class="text-body d-block"><i class="fas fa-eye me-1"></i>
                                                     {{ $data->jmlh_view ? $data->jmlh_view : '0' }}</small>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <p class="card-text" style="text-align: justify">
+                                            <p class="card-text" style="text-align: justify; color: black;">
                                                 {{ substr(strip_tags($data->deskripsi), 0, 110) . '...' }}
                                             </p>
                                         </div>
-                                    </div>
+                                    </div><br>
                                 </a>
                             </div>
                         @endforeach
@@ -107,76 +211,46 @@
             <div class="col-3">
                 <div class=" p-4 rounded" style="background-color: #f1f8f7">
                     <div class="slideshow-container">
-
                         <div class="mySlides">
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>Mempermudah sekali, lebih di kembangkan lagi ya</q>
+                            <p>Mempermudah sekali, lebih di kembangkan lagi ya</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>Sangat Membantu dalam pencarian layanan yang tersedia</q>
+                            <p>Sangat Membantu dalam pencarian layanan yang tersedia</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>situs ini sayang membantu dalam mencari apa saja service yang ada di jogja</q>
-                            {{-- <p class="author">- John Keats</p> --}}
+                            <p>situs ini sayang membantu dalam mencari apa saja service yang ada di jogja</p>
                         </div>
 
                         <div class="mySlides">
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>yang seperti ini harusnya di bantu oleh pemerintah dalam pengembangannya</q>
+                            <p>yang seperti ini harusnya di bantu oleh pemerintah dalam pengembangannya</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>memberikan jalan untuk orang banyak</q>
+                            <p>memberikan jalan untuk orang banyak</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>Informasi sangat lengkap dan mudah di pahami</q>
+                            <p>Informasi sangat lengkap dan mudah di pahami</p>
                         </div>
                         <div class="mySlides">
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>Terimakasih atas informasinya, saya baru soalnya di jogja</q>
+                            <p>Terimakasih atas informasinya, saya baru soalnya di jogja</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>untuk orang baru sangat bermanfaat sekali</q>
+                            <p>untuk orang baru sangat bermanfaat sekali</p>
                             <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i>
                                 {{ isset($data->created_at) ? \Carbon\Carbon::parse($data->created_at)->format('D m Y') : '-' }}</small>
-                            <q>membantu orang yang tidak tau tentang service yang tersedia di</q>
+                            <p>membantu orang yang tidak tau tentang service yang tersedia di</p>
                         </div>
-                    </div>
-                    <div class="dot-container">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
                     </div>
                 </div>
-                <div class=" p-4 rounded" style="background-color: #c9e6e1;margin-top: 0.5cm">
-                    {{-- <div class="row g-4"> --}}
-                    <div class="col-12">
-                        <h2>Recent Posts</h2><br>
-                        @foreach ($recentpost as $datarecentpost)
-                            <a href="{{ route('frontend.frontend-artikel.show', $datarecentpost->id) }}">
-                                <div class="row g-4" style="margin-left: 0;margin-top: 0cm">
-                                    <div class="col-6">
-                                        <div class="overflow-hidden rounded">
-                                            <img src="{{ asset('imageArtikel/' . $datarecentpost->image) }}"
-                                                class="img-zoomin rounded w-100" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="features-content d-flex flex-column">
-                                            {{ substr(strip_tags($datarecentpost->judul), 0, 10) . '...' }}
-                                            <small><i class="fa fa-clock">
-                                                    {{ $datarecentpost->created_at->diffForHumans() }}</i> </small>
-                                            <small><i class="fa fa-eye">
-                                                    {{ $data->jmlh_view ? $data->jmlh_view : '0' }} Views</i></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                        {{-- </div> --}}
-                    </div>
+                <div class="dot-container">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
             </div>
         </div>
@@ -215,5 +289,11 @@
             slides[slideIndex - 1].style.display = "block";
             dots[slideIndex - 1].className += " active";
         }
+
+        function autoSlide() {
+            plusSlides(1);
+        }
+
+        setInterval(autoSlide, 2500);
     </script>
 @endpush

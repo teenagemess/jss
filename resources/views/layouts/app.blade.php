@@ -14,7 +14,7 @@
 
     <!-- Banner End -->
     <!-- Footer Start -->
-    <div class="container-fluid  footer " style="background-color: rgb(13, 121, 40)">
+    <div class="container-fluid  footer " style="background-color: #089E52;">
         <div class="container py-3">
             <div class="row">
                 <div class="col-md-4">
@@ -27,8 +27,7 @@
                         Kota Yogyakarta, Daerah Istimewa Yogyakarta 55165
                     </p>
                 </div>
-                <div class="col-md-4 mt-4">
-                    <b style="color: #FFFFFF;margin-left: 0.5cm;">Unduh Aplikasi JSS</b>
+                <div class="col-md-4 mt-4" style="text-align: center">
                     <img src="{{ asset('') }}assets/playstore.png" alt="" width="60%">
 
                 </div>
@@ -58,7 +57,7 @@
     <!-- Footer End -->
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright  py-4" style="background-color: rgb(13, 121, 40)">
+    <div class="container-fluid copyright  py-4" style="background-color: #089E52;">
         <div class="container">
             <div class=" text-center text-md-end text-white">
                 <center>
@@ -72,8 +71,8 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i
-            class="fa fa-arrow-up"></i></a>
+    {{-- <a href="" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i
+            class="fa fa-arrow-up"></i></a> --}}
 
 
     <!-- JavaScript Libraries -->
