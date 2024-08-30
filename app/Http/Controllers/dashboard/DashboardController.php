@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $dataartikelfooter = ArtikelModel::limit(2)->get();
         $resentPost = ArtikelModel::limit(3)->get();
         $kategori = KategoriModel::all();
-        $dataArtikel = ArtikelModel::limit(4)->get();
+        $dataArtikel = ArtikelModel::orderBy('created_at', 'desc')->limit(4)->get();
         $dataEvent = EventModel::with('kategoris')->limit(6)->get();
         $dataProfile = ProfileModel::first();
         $data = KategoriModel::first();

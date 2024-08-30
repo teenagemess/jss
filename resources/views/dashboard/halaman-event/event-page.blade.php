@@ -11,7 +11,7 @@
             object-fit: cover;
         }
 
-        .badge {
+        .badge-kategori {
             background-color: #F2F8F7;
             border-radius: 4px;
         }
@@ -88,7 +88,7 @@
                                                     <img class="card-img-cup" src="{{ asset('imageEvent/' . $event->image) }}" alt="Card image cap">
                                                 </div>
                                                 <div class="card-body" style="margin-left: 1cm">
-                                                    <span class="badge" style="color: black">{{ $event->kategoris->nama }}</span>
+                                                    <span class="badge-kategori badge" style="color: black">{{ $event->kategoris->nama }}</span>
                                                     <h5 class="card-title mt-2">
                                                         {{ Str::words($event->nama_event, 10, '...') }}
                                                     </h5>

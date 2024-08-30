@@ -21,8 +21,8 @@ class LayananFrontendController extends Controller
     {
         $dataartikelfooter = ArtikelModel::limit(2)->get();
         $kategori = KategoriModel::all();
-        $datalayananunggulan = LayananModel::limit(9)->get();
-        $datalayananall = LayananModel::all();
+        $datalayananunggulan = LayananModel::orderBy('created_at', 'desc')->limit(9)->get();
+        $datalayananall = LayananModel::orderBy('created_at', 'desc')->get();
         $dataProfile = ProfileModel::first();
         return view('frontend.layanan.data-layanan', ['kategori' => $kategori, 'dataartikelfooter' => $dataartikelfooter, 'datalayananunggulan' => $datalayananunggulan, 'datalayananall' => $datalayananall, 'dataProfile' => $dataProfile]);
     }

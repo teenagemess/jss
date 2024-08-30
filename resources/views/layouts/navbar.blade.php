@@ -22,10 +22,10 @@
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
                         style="color: whitesmoke">Id</a>
                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                        <a href="#" class="dropdown-item" style="color: whitesmoke">English</a>
+                        <a href="#" class="dropdown-item" style="color: black">English</a>
                     </div>
                 </div>
-                <a href="{{ route('dashboard') }}"><span class="badge bg-warning">admin</span></a>
+                <a href="{{ route('dashboard') }}"><span class="badge bg-warning" style="padding: 7px; padding-right:17px; padding-left:17px; ">Admin</span></a>
             </nav>
         </div>
     </div>

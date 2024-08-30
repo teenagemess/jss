@@ -62,7 +62,7 @@
                                 <img src="{{ asset('imageLayanan/' . $value2->image) }}"
                                     class="{{ $value2->jenis_frame == '0' ? 'rounded' : 'rounded' }} mx-auto d-block img-zoomin"
                                     alt="" width="100px" height="100px">
-                                <h3 class="text-center" style="font-size: 15px; margin-top: 10px;">{{ $value2->nama_layanan }}</h3>
+                                <h3 class="text-center" style="font-size: 17px; margin-top: 10px;">{{ $value2->nama_layanan }}</h3>
                             </div>
                             <!-- Modal Search Start -->
                             <div class="modal fade" id="<?= 'modal-unggulan-' . $value2->id ?>" tabindex="-1"
@@ -108,7 +108,7 @@
                                     <img src="{{ asset('imageLayanan/' . $value3->image) }}"
                                         class="{{ $value3->jenis_frame == '0' ? 'rounded' : 'rounded' }} mx-auto d-block img-zoomin"
                                         alt="" width="100px" height="100px">
-                                    <h3 class="text-center" style="font-size: 20px">{{ $value3->nama_layanan }}</h3>
+                                    <h3 class="text-center" style="font-size: 17px; margin-top:10px;">{{ $value3->nama_layanan }}</h3>
                                 </div>
                                 <!-- Modal Search Start -->
                                 <div class="modal fade" id="<?= 'modal-lg-' . $value3->id ?>" tabindex="-1"
